@@ -25,10 +25,21 @@ if response.status_code == 200:
     print(description)
     
     #ingrédients
+    print("INGRÉDIENTS :")
     div_ingredients =  soup.find("div", class_ = "ingredients")
     e_ingredients = div_ingredients.find_all("p")
     for e_ingredient in e_ingredients:
-        print("Ingredient : ", e_ingredient.text)
+        
+        print(e_ingredient.text)
+        
+    
+    #prepa
+    print("PRÉPARATION :")
+    div_preparation =  soup.find("div", class_ = "colonne2 colonne")
+    e_preparations = div_preparation.find_all("td", class_ = "preparation_etape")
+    for e_preparation in e_preparations:
+        
+        print(e_preparation.text)
     
     
 else:
