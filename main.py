@@ -3,6 +3,11 @@ from bs4 import BeautifulSoup
 
 url = "https://codeavecjonathan.com/scraping/recette/"
 
+def get_text_if_not_none(e):
+    if e:
+        return e.text
+    return None
+
 response = requests.get(url)
 response.encoding = response.apparent_encoding #Encodage
 
@@ -16,7 +21,7 @@ if response.status_code == 200:
     titre = soup.find("h1").text
     print(titre)
     
-    description = soup.find("p", class_ = "description").text
+    description = get_text_if_not_none(soup.find("p", class_ = "description2"))
     print(description)
     
     
